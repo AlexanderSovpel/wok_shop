@@ -1,0 +1,41 @@
+﻿@if (ViewBag.FoodList != null && ViewBag.CartList != null)
+{
+    for (int i = 0; i < ViewBag.CartList.Count; ++i)
+    {
+        <div>
+            <input type="hidden" value="@ViewBag.FoodList[i].Id" />
+            <p>@ViewBag.FoodList[i].Name</p>
+            <input type="number" min="1" max="10" name="count" class="count" value="@ViewBag.CartList[i].Count" prev="@ViewBag.CartList[i].Count" />
+            <input type="hidden" value="@ViewBag.FoodList[i].Price" name="price" class="price" />
+            @{int total = ViewBag.FoodList[i].Price * ViewBag.CartList[i].Count; }
+            <p class="item-total">@total</p>
+            <input type="button" value="Удалить" class="delete-from-cart" />
+        </div>
+    }
+
+
+    /*foreach (var food in ViewBag.FoodList)
+    {
+    <div>
+        <input type="hidden" value="@food.Id" />
+        <p>@food.Name</p>
+        <input type="number" min="1" max="10" name="count" class="count" value="@food.Count" prev="@food.Count"/>
+        <input type="hidden" value="@food.Price" name="price" class="price" />
+        @{int total = food.Price * food.Count; }
+        <p class="item-total">@total</p>
+        <input type="button" value="Удалить" class="delete-from-cart" />
+    </div>
+    }*/
+}
+@if (ViewBag.FoodList == null)
+{
+    <p id="total">Корзина пуста</p>
+}
+else if (ViewBag.FoodList.Count == 0)
+{
+    <p id="total">Корзина пуста</p>
+}
+else
+{
+    <p id="total">Итого: @ViewBag.Total</p>
+}

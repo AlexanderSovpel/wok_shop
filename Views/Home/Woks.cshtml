@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+    ViewBag.Title = "Готовые WOK";
+    ViewBag.Active = "woks";
+    ViewBag.Menu = "index";
+}
+
+<div class="items">
+    <div class="container">
+        <div class="items-sec">
+
+            @if (ViewBag.Woks != null)
+            {
+                foreach (var food in ViewBag.Woks)
+                {
+                    <div class="col-md-3 feature-grid">
+
+                        <input type="hidden" value="@food.Id" name="id" />
+                        <a href="/Home/Index/@food.Id">
+                            <img src="@food.Image" alt="" />
+                        </a>
+
+                        <div class="arrival-info">
+                            <h4><a href="/Home/Index/@food.Id">@food.Name</a></h4>
+
+                            <p>@food.Price BYR</p>
+                            <span class="pric1">@food.Weight г.</span><br />
+                            <input type="number" min="1" max="10" class="item_quantity" value="1" name="count" />
+                            <input type="button" class="item_add items add-to-cart" value="Добавить">
+                        </div>
+                        <div class="viw">
+                            <a href="/Home/Index/@food.Id">
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                Подробнее
+                            </a>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>
+                    <img src="@ViewBag.SingleFood.Image" />
+                    <h3><a href="/Home/Index/@ViewBag.SingleFood.Id">@ViewBag.SingleFood.Name</a></h3>
+                    <p>@ViewBag.SingleFood.Description</p>
+                    <p>@ViewBag.SingleFood.Price</p>
+                    <input type="number" min="1" max="10" value="1" name="Count" />
+                    <a href="/Home/AddToCart/@ViewBag.SingleFood.Id">Добавить</a>
+                </div>
+            }
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

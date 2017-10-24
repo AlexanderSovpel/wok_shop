@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Title = "Администрирование - Изменение продукта";
+    ViewBag.Menu = "foods";
+    var food = ViewBag.Food;
+}
+
+<div class="contact-form" id="add-form">
+    <h3>Изменение продукта</h3>
+
+    <form method="post" action="/Foods/ChangeFood" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="@food.Id" />
+
+        <div>
+            <span><label for="category">КАТЕГОРИЯ</label></span>
+            <span>
+                <select name="category" id="category">
+                    <option value="hot" @{if (food.Category == "hot") { @Html.Raw("selected"); } }>горячие блюда</option>
+                    <option value="wok" @{if (food.Category == "wok") { @Html.Raw("selected"); } }>готовые wok</option>
+                    <option value="soup" @{if (food.Category == "soup") { @Html.Raw("selected"); } }>супы</option>
+                </select>
+            </span>
+        </div>
+
+        <div>
+            <span><label for="name">НАЗВАНИЕ</label></span>
+            <span><input type="text" id="name" name="name" class="textbox" value="@food.Name" /></span>
+        </div>
+
+        <div>
+            <span><label for="image">ФОТО</label></span>
+            <span><input type="file" id="image" name="image" accept="image/jpeg,image/png" /></span>
+        </div>
+
+        <div>
+            <span><label for="description">ОПИСАНИЕ</label></span>
+            <span><textarea name="description" id="description">@food.Description</textarea></span>
+        </div>
+
+        <div>
+            <span><label for="weight">ВЕС</label></span>
+            <span><input type="number" name="weight" id="weight" min="10" value="@food.Weight" step="5" /></span>
+        </div>
+
+        <div>
+            <span><label for="price">ЦЕНА</label></span>
+            <span><input type="number" name="price" id="price" min="5000" value="@food.Price" step="1000"/></span>
+        </div>
+
+        <div>
+            <span>
+                <input type="submit" class="mybutton" name="save" value="Сохранить">
+                <button name="cancel" class="mybutton cancel" value="cancel">Отменить</button>
+         </span>
+        </div>
+
+        <div>
+            <p class="message"></p>
+        </div>
+    </form>
+</div>
+
+
+@*@using (Html.BeginForm("ChangeFood", "Foods", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    var food = ViewBag.Food;
+    <label>
+        Категория:
+        <select name="category">
+            <option value="hot" @{if (food.Category == "hot") { Html.Raw("selected"); } }>горячие блюда</option>
+            <option value="wok" @{if (food.Category == "wok") { Html.Raw("selected"); } }>готовые wok</option>
+            <option value="soup" @{if (food.Category == "soup") { Html.Raw("selected"); } }>супы</option>
+        </select>
+    </label>
+            <input type="hidden" name="id" value="@food.Id" />
+            <input type="text" name="name" placeholder="Название" value="@food.Name" />
+            <textarea name="description" placeholder="Описание">@food.Description</textarea>
+            <label>Фото: <input type="file" name="image" accept="image/jpeg,image/png" files="@food.Image" /></label>
+            <input type="number" name="weight" min="10" value="@food.Weight" step="5" placeholder="Вес" />
+            <input type="number" name="price" min="5000" value="@food.Price" step="1000" placeholder="Цена" />
+            <input type="submit" name="save" value="Сохранить">
+            <button name="cancel" value="cancel">Отменить</button>
+    }*@

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Title = "Регистрация";
+}
+
+<div class="login_sec">
+    <div class="container">
+        <h2>Регистрация</h2>
+        <div class="col-md-6 log">
+            <p>Для продолжения работы выполните вход</p>
+            <form>
+                <h5>Email</h5>
+                <input type="text" value="" name="email">
+                <h5>Пароль</h5>
+                <input type="password" value="" name="password">
+                <h5>Подтвердите пароль</h5>
+                <input type="password" value="" name="passwordSubmit">
+                <input type="submit" id="register" value="Зарегистрироваться">
+                <a class="acount-btn" href="/Account/Login">Войти</a>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

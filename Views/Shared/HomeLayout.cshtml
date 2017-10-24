@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Магазин китайской еды WOK-SHOP - @ViewBag.Title</title>
+
+    <!-- Custom Theme files -->
+    @Styles.Render("~/Content/bootstrap.css")
+
+    <!--theme style-->
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    <!--//theme style-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- start menu -->
+    @Styles.Render("~/Content/memenu.css")
+    @Scripts.Render("~/Scripts/memenu.js")
+    <script>
+    $(document).ready(function () {
+        $(".memenu").memenu();
+    });
+    </script>
+    <!--//start menu -->
+
+    @Scripts.Render("~/Scripts/main.js")
+</head>
+<body>
+    @Html.Partial("../Partial/Header")
+
+    @Html.Partial("../Partial/FoodMenu")
+
+    @RenderBody()
+
+    @Html.Partial("../Partial/Footer")
+
+    <div class="copywrite">
+        <div class="container">
+            <div class="copy">
+                <p>
+                    © 2015 Lighting. All Rights Reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+                </p>
+            </div>
+            <div class="social">
+                <a href="#"><i class="facebook"></i></a>
+                <a href="#"><i class="twitter"></i></a>
+                <a href="#"><i class="dribble"></i></a>
+                <a href="#"><i class="google"></i></a>
+                <a href="#"><i class="youtube"></i></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!---->
+</body>
+</html>
+

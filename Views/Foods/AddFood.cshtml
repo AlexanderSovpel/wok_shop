@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Title = "Администрирование - Добавление продукта";
+    ViewBag.Menu = "addFood";
+}
+
+<div class="contact-form" id="add-form">
+    <h3>Добавление продукта</h3>
+
+    <form method="post" action="/Foods/AddFood" enctype = "multipart/form-data">
+        <div>
+            <span><label for="category">КАТЕГОРИЯ</label></span>
+            <span>
+                <select name="category" id="category">
+                    <option value="hot">горячие блюда</option>
+                    <option value="wok">готовые wok</option>
+                    <option value="soup">супы</option>
+                </select>
+            </span>
+        </div>
+
+        <div>
+            <span><label for="name">НАЗВАНИЕ</label></span>
+            <span><input type="text" id="name" name="name" placeholder="Название" class="textbox"/></span>
+        </div>
+
+        <div>
+            <span><label for="image">ФОТО</label></span>
+            <span><input type="file" id="image" name="image" accept="image/jpeg,image/png" /></span>
+        </div>
+
+        <div>
+            <span><label for="description">ОПИСАНИЕ</label></span>
+            <span><textarea name="description" id="description" placeholder="Описание"></textarea></span>
+        </div>
+
+        <div>
+            <span><label for="weight">ВЕС</label></span>
+            <span><input type="number" name="weight" id="weight" min="10" value="100" step="5" placeholder="Вес" /></span>
+        </div>
+
+        <div>
+            <span><label for="price">ЦЕНА</label></span>
+            <span><input type="number" name="price" id="price" min="5000" value="10000" step="1000" placeholder="Цена" /></span>
+        </div>
+
+        <div>
+            <span><input type="submit" class="mybutton" name="add" value="Добавить" /></span>
+        </div>
+
+        <div>
+            <p class="message"></p>
+        </div>
+    </form>
+</div>

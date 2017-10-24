@@ -1,0 +1,18 @@
+﻿<div class="header-top">
+    <div class="header-bottom">
+        <div class="logo">
+            <h1><a href="/Home/Index">Wok-Shop</a></h1>
+        </div>
+        <!---->
+        <div class="top-nav">
+            <ul class="memenu skyblue">
+                <li @if (ViewBag.Menu == "foods") { @Html.Raw("class='active'") ; }><a href="/Foods/Foods">Еда</a></li>
+                <li @if (ViewBag.Menu == "addFood") { @Html.Raw("class='active'") ; }><a href="/Foods/AddFood">Добавить</a></li>
+                <li @if (ViewBag.Menu == "orders") { @Html.Raw("class='active'") ; }><a href="/Order/Orders">Заказы</a></li>
+                <li><a href="/Account/Logout">Выход</a></li>
+            </ul>
+        </div>
+        <!---->
+    </div>
+    <div class="clearfix"></div>
+</div>

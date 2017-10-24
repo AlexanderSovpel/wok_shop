@@ -1,0 +1,112 @@
+﻿@{
+    Layout = "~/Views/Shared/HomeLayout.cshtml";
+    ViewBag.Title = "Корзина";
+}
+
+<div class="container">
+    <div class="check-sec">
+        <div class="col-md-3 cart-total">
+            <div class="price-details">
+                <h3>Детали заказа</h3>
+                <span>Сумма заказа</span>
+                <span class="total1">@ViewBag.Total BYR</span>
+                <span>Стомость доставки</span>
+                <span class="total1">0</span>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+            <p class="total_price">Итого: @ViewBag.Total BYR</p>
+            <a class="continue" href="#">Оформить заказ</a>
+        </div>
+        <div class="col-md-9 cart-items">
+            <h1>
+            @if (@ViewBag.Count > 0)
+            {
+                @Html.Raw("Корзина (" + ViewBag.Count + ")");
+            }
+            else
+            {
+                @Html.Raw("Корзина пуста");
+            }
+            </h1>
+
+            @if (ViewBag.FoodList != null && ViewBag.CartList != null)
+            {
+                for (int i = 0; i < ViewBag.CartList.Count; ++i)
+                {
+                    <div class="cart-header">
+                        <div class="close1 delete-from-cart"></div>
+                        <div class="cart-sec simpleCart_shelfItem">
+                            <input type="hidden" class="item-id" value="@ViewBag.FoodList[i].Id" />
+                            <div class="cart-item cyc">
+                                <img src="@ViewBag.FoodList[i].Image" class="img-responsive" alt="" />
+                            </div>
+                            <div class="cart-item-info">
+                                <h3><a href="/Home/Index/@ViewBag.FoodList[i].Id">@ViewBag.FoodList[i].Name</a></h3>
+                                <label>
+                                    Количество: 
+                                    <input type="number" min="1" max="10" name="count" class="item_quantity count" value="@ViewBag.CartList[i].Count" prev="@ViewBag.CartList[i].Count" />
+                                </label>
+                                <input type="hidden" value="@ViewBag.FoodList[i].Price" name="price" class="price" />
+                                @{int total = ViewBag.FoodList[i].Price * ViewBag.CartList[i].Count; }
+                                <p class="item-total">@total BYR</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                }
+            }
+            <p class="cart-message"></p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="contact-form" id="contact-form">
+        <h3>Оформление заказа</h3>
+        <form>
+            <div>
+                <span><label for="name">ИМЯ</label></span>
+                <span><input id="name" name="name" type="text" class="textbox" required></span>
+            </div>
+            <div>
+                <span><label for="email">EMAIL</label></span>
+                <span><input id="email" name="email" type="email" class="textbox" required></span>
+            </div>
+            <div>
+                <span><label for="address">АДРЕС</label></span>
+                <span><input id="address" name="address" type="text" class="textbox" required></span>
+            </div>
+            <div>
+                <span><label for="phone">ТЕЛЕФОН</label></span>
+                <span><input id="phone" name="phone" type="text" class="textbox" required pattern="" title="+37529XXXXXXX"></span>
+            </div>
+            <div>
+                <span><label for="comment">КОММЕНТАРИИ К ЗАКАЗУ</label></span>
+                <span>
+                    <textarea id="comment" name="comment" placeholder="подъезд, этаж и удобное время доставки и др."></textarea>
+                </span>
+            </div>
+            <div>
+                <span><label>ТИП ДОСТАВКИ</label></span>
+                <span>
+                    <label><input type="radio" name="deliveryType" value="courier" />курьером</label>
+                    <label><input type="radio" name="deliveryType" value="self" />самовывоз</label>
+                </span>
+            </div>
+            <div>
+                <span><label>ОПЛАТА</label></span>
+                <span>
+                    <label><input type="radio" name="payBy" value="cash" />наличными</label>
+                    <label><input type="radio" name="payBy" value="card" />карточкой</label>
+                </span>
+            </div>
+            <div>
+                <span><input type="submit" class="mybutton" value="Сделать заказ" name="makeOrder"></span>
+            </div>
+            <div>
+                <p class="message"></p>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿<div class="header-top">
+    <div class="header-bottom">
+        <div class="logo">
+            <h1><a href="/Home/Index">Wok-Shop</a></h1>
+        </div>
+        <!---->
+        <div class="top-nav">
+            <ul class="memenu skyblue">
+                <li @if (ViewBag.Menu == "index") { @Html.Raw("class='active'"); }><a href="/Home/Index">Меню</a></li>
+                <li @if (ViewBag.Menu == "delivery") { @Html.Raw("class='active'"); }><a href="/Home/Delivery">Доставка</a></li>
+                <li @if (ViewBag.Menu == "about") { @Html.Raw("class='active'"); }><a href="/Home/About">О нас</a></li>
+            </ul>
+        </div>
+        <!---->
+        <div class="cart box_1">
+            <a href="/Cart/Cart">
+                <div class="total">
+                    <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span>)
+                </div>
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            </a>
+
+            <p><a href="/Cart/Cart" class="simpleCart_empty">Корзина</a></p>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <!---->
+    </div>
+    <div class="clearfix"></div>
+</div>

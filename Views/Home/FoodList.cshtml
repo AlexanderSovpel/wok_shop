@@ -1,0 +1,25 @@
+﻿@if (ViewBag.Foods != null)
+{
+    foreach (var food in ViewBag.Foods)
+    {
+        <div>
+            <img src="@food.Image" />
+            <h3><a href="/Home/Index/@food.Id">@food.Name</a></h3>
+            <p>@food.Description</p>
+            <p>@food.Price</p>
+            <input type="number" min="1" max="10" value="1" name="Count" />
+            <a href="/Home/AddToCart/@food.Id">Добавить</a>
+        </div>
+    }
+}
+else
+{
+    <div>
+        <img src="@ViewBag.SingleFood.Image" />
+        <h3><a href="/Home/Index/@ViewBag.SingleFood.Id">@ViewBag.SingleFood.Name</a></h3>
+        <p>@ViewBag.SingleFood.Description</p>
+        <p>@ViewBag.SingleFood.Price</p>
+        <input type="number" min="1" max="10" value="1" name="Count" />
+        <a href="/Home/AddToCart/@ViewBag.SingleFood.Id">Добавить</a>
+    </div>
+}

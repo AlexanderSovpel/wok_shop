@@ -1,0 +1,8 @@
+﻿<div class="category-menu">
+    <ul class="memenu skyblue">
+        <li @if (ViewBag.Active == "all") { @Html.Raw("class='active'") ; }><a href="/Home/Index">Все</a></li>
+        <li @if (ViewBag.Active == "hots") { @Html.Raw("class='active'") ; }><a href="/Home/Hots">Горячие блюда</a></li>
+        <li @if (ViewBag.Active == "woks") { @Html.Raw("class='active'") ; }><a href="/Home/Woks">Готовые WOK</a></li>
+        <li @if (ViewBag.Active == "soups") { @Html.Raw("class='active'") ; }><a href="/Home/Soups">Супы</a></li>
+    </ul>
+</div>

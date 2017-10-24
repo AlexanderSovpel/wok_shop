@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Title = "Администрирование - Заказы";
+    ViewBag.Menu = "orders";
+
+}
+
+<div class="container orders">
+    <h3>Заказы</h3>
+    @foreach (var order in ViewBag.Orders)
+    {
+        <div class="order">
+            <p name="id">Заказ №@order.OrderId</p>
+            <p name="name">Имя: @order.Person</p>
+            <p name="street">Адрес: @order.Address</p>
+            <p name="deliveryType">Тип доставки: 
+            @if (order.DeliveryType == "courier")
+            {
+                @Html.Raw("курьером");
+            }
+            else
+            {
+                @Html.Raw("самовывоз");
+            }
+            </p>
+            <p name="payBy">Тип оплаты: 
+            @if (order.PayBy == "card")
+            {
+                @Html.Raw("карточкой");
+            }
+            else
+            {
+                @Html.Raw("наличными");
+            }            
+            </p>
+            <div class="foods-in-order">
+                <p>Состав заказа:</p>
+                <ul class="order-list">
+                    @foreach (var foodsInOrder in ViewBag.FoodsInOrder)
+                    {
+                        if (foodsInOrder.OrderId == order.OrderId)
+                        {
+                            foreach(var food in ViewBag.Foods)
+                            {
+                                if (food.Id == foodsInOrder.FoodId)
+                                {
+                                    <li>@food.Name, @foodsInOrder.Count шт.</li>
+                                }
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>
